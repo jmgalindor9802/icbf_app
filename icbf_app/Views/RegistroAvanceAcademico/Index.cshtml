@@ -1,0 +1,65 @@
+﻿@model IEnumerable<icbf_app.Models.RegistroAvanceAcademico>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnioEscolarAvance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NivelAvance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotaAvance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionAvance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaEntregaAvance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNinoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnioEscolarAvance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NivelAvance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotaAvance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionAvance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEntregaAvance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNinoNavigation.IdNino)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdAvance">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAvance">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAvance">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
