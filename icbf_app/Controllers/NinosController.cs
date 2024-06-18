@@ -48,8 +48,19 @@ namespace icbf_app.Controllers
         // GET: Ninos/Create
         public IActionResult Create()
         {
-            ViewData["IdAcudiente"] = new SelectList(_context.AspNetUsers, "Id", "Id");
-            ViewData["IdJardin"] = new SelectList(_context.Jardines, "IdJardin", "IdJardin");
+            ViewData["IdAcudiente"] = new SelectList(_context.AspNetUsers, "Id", "UserName");
+            ViewData["IdJardin"] = new SelectList(_context.Jardines, "IdJardin", "NombreJardin");
+            ViewBag.TipoSangreNino = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "A+", Value = "A+" },
+                new SelectListItem { Text = "A-", Value = "A-" },
+                new SelectListItem { Text = "B+", Value = "B+" },
+                new SelectListItem { Text = "B-", Value = "B-" },
+                new SelectListItem { Text = "AB+", Value = "AB+" },
+                new SelectListItem { Text = "AB-", Value = "AB-" },
+                new SelectListItem { Text = "O+", Value = "O+" },
+                new SelectListItem { Text = "O-", Value = "O-" }
+            };
             return View();
         }
 
@@ -66,8 +77,19 @@ namespace icbf_app.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAcudiente"] = new SelectList(_context.AspNetUsers, "Id", "Id", nino.IdAcudiente);
-            ViewData["IdJardin"] = new SelectList(_context.Jardines, "IdJardin", "IdJardin", nino.IdJardin);
+            ViewData["IdAcudiente"] = new SelectList(_context.AspNetUsers, "Id", "UserName", nino.IdAcudiente);
+            ViewData["IdJardin"] = new SelectList(_context.Jardines, "IdJardin", "NombreJardin", nino.IdJardin);
+            ViewBag.TipoSangreNino = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "A+", Value = "A+" },
+                new SelectListItem { Text = "A-", Value = "A-" },
+                new SelectListItem { Text = "B+", Value = "B+" },
+                new SelectListItem { Text = "B-", Value = "B-" },
+                new SelectListItem { Text = "AB+", Value = "AB+" },
+                new SelectListItem { Text = "AB-", Value = "AB-" },
+                new SelectListItem { Text = "O+", Value = "O+" },
+                new SelectListItem { Text = "O-", Value = "O-" }
+            };
             return View(nino);
         }
 
@@ -84,8 +106,19 @@ namespace icbf_app.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdAcudiente"] = new SelectList(_context.AspNetUsers, "Id", "Id", nino.IdAcudiente);
-            ViewData["IdJardin"] = new SelectList(_context.Jardines, "IdJardin", "IdJardin", nino.IdJardin);
+            ViewData["IdAcudiente"] = new SelectList(_context.AspNetUsers, "Id", "UserName", nino.IdAcudiente);
+            ViewData["IdJardin"] = new SelectList(_context.Jardines, "IdJardin", "NombreJardin", nino.IdJardin);
+            ViewBag.TipoSangreNino = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "A+", Value = "A+" },
+                new SelectListItem { Text = "A-", Value = "A-" },
+                new SelectListItem { Text = "B+", Value = "B+" },
+                new SelectListItem { Text = "B-", Value = "B-" },
+                new SelectListItem { Text = "AB+", Value = "AB+" },
+                new SelectListItem { Text = "AB-", Value = "AB-" },
+                new SelectListItem { Text = "O+", Value = "O+" },
+                new SelectListItem { Text = "O-", Value = "O-" }
+            };
             return View(nino);
         }
 
@@ -121,8 +154,19 @@ namespace icbf_app.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAcudiente"] = new SelectList(_context.AspNetUsers, "Id", "Id", nino.IdAcudiente);
-            ViewData["IdJardin"] = new SelectList(_context.Jardines, "IdJardin", "IdJardin", nino.IdJardin);
+            ViewData["IdAcudiente"] = new SelectList(_context.AspNetUsers, "Id", "UserName", nino.IdAcudiente);
+            ViewData["IdJardin"] = new SelectList(_context.Jardines, "IdJardin", "NombreJardin", nino.IdJardin);
+            ViewBag.TipoSangreNino = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "A+", Value = "A+" },
+                new SelectListItem { Text = "A-", Value = "A-" },
+                new SelectListItem { Text = "B+", Value = "B+" },
+                new SelectListItem { Text = "B-", Value = "B-" },
+                new SelectListItem { Text = "AB+", Value = "AB+" },
+                new SelectListItem { Text = "AB-", Value = "AB-" },
+                new SelectListItem { Text = "O+", Value = "O+" },
+                new SelectListItem { Text = "O-", Value = "O-" }
+            };
             return View(nino);
         }
 
