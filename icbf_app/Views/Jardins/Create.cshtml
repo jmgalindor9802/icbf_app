@@ -4,39 +4,43 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear Jardín</h1>
 
-<h4>Jardin</h4>
+<h4></h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="NombreJardin" class="control-label"></label>
+                <label asp-for="NombreJardin" class="control-label">Nombre</label>
                 <input asp-for="NombreJardin" class="form-control" />
                 <span asp-validation-for="NombreJardin" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DireccionJardin" class="control-label"></label>
+                <label asp-for="DireccionJardin" class="control-label">Dirección</label>
                 <input asp-for="DireccionJardin" class="form-control" />
                 <span asp-validation-for="DireccionJardin" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EstadoJardin" class="control-label"></label>
+                <label asp-for="EstadoJardin" class="control-label">Estado</label>
                 <input asp-for="EstadoJardin" class="form-control" />
                 <span asp-validation-for="EstadoJardin" class="text-danger"></span>
             </div>
+            </br>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-success">Cancelar</a>
             </div>
+            
         </form>
+        
+          
+     
     </div>
 </div>
+   </br>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
