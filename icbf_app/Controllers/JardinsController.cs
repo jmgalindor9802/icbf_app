@@ -45,6 +45,14 @@ namespace icbf_app.Controllers
         // GET: Jardins/Create
         public IActionResult Create()
         {
+            var estados = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Aprobado", Text = "Aprobado" },
+        new SelectListItem { Value = "En trámite", Text = "En trámite" },
+        new SelectListItem { Value = "Negado", Text = "Negado" }
+    };
+
+            ViewBag.Estados = estados;
             return View();
         }
 
@@ -55,12 +63,26 @@ namespace icbf_app.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdJardin,NombreJardin,DireccionJardin,EstadoJardin")] Jardin jardin)
         {
+
+            if (_context.Jardines.Any(j => j.NombreJardin == jardin.NombreJardin))
+            {
+                ModelState.AddModelError("NombreJardin", "Ya existe un jardín con este nombre.");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(jardin);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            var estados = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Aprobado", Text = "Aprobado" },
+        new SelectListItem { Value = "En trámite", Text = "En trámite" },
+        new SelectListItem { Value = "Negado", Text = "Negado" }
+    };
+            ViewBag.Estados = estados;
             return View(jardin);
         }
 
@@ -77,6 +99,15 @@ namespace icbf_app.Controllers
             {
                 return NotFound();
             }
+
+            var estados = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Aprobado", Text = "Aprobado" },
+        new SelectListItem { Value = "En trámite", Text = "En trámite" },
+        new SelectListItem { Value = "Negado", Text = "Negado" }
+    };
+
+            ViewBag.Estados = estados;
             return View(jardin);
         }
 
@@ -112,6 +143,14 @@ namespace icbf_app.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            var estados = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Aprobado", Text = "Aprobado" },
+        new SelectListItem { Value = "En trámite", Text = "En trámite" },
+        new SelectListItem { Value = "Negado", Text = "Negado" }
+    };
+            ViewBag.Estados = estados;
             return View(jardin);
         }
 
