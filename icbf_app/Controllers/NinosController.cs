@@ -73,23 +73,34 @@ namespace icbf_app.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(nino);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(nino);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    // Log the exception (you can use any logging framework)
+                    Console.WriteLine($"Error: {ex.Message}");
+                    ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
             }
+
+            // If we got this far, something failed, redisplay form
             ViewData["IdAcudiente"] = new SelectList(_context.AspNetUsers, "Id", "UserName", nino.IdAcudiente);
             ViewData["IdJardin"] = new SelectList(_context.Jardines, "IdJardin", "NombreJardin", nino.IdJardin);
             ViewBag.TipoSangreNino = new List<SelectListItem>
-            {
-                new SelectListItem { Text = "A+", Value = "A+" },
-                new SelectListItem { Text = "A-", Value = "A-" },
-                new SelectListItem { Text = "B+", Value = "B+" },
-                new SelectListItem { Text = "B-", Value = "B-" },
-                new SelectListItem { Text = "AB+", Value = "AB+" },
-                new SelectListItem { Text = "AB-", Value = "AB-" },
-                new SelectListItem { Text = "O+", Value = "O+" },
-                new SelectListItem { Text = "O-", Value = "O-" }
-            };
+    {
+        new SelectListItem { Text = "A+", Value = "A+" },
+        new SelectListItem { Text = "A-", Value = "A-" },
+        new SelectListItem { Text = "B+", Value = "B+" },
+        new SelectListItem { Text = "B-", Value = "B-" },
+        new SelectListItem { Text = "AB+", Value = "AB+" },
+        new SelectListItem { Text = "AB-", Value = "AB-" },
+        new SelectListItem { Text = "O+", Value = "O+" },
+        new SelectListItem { Text = "O-", Value = "O-" }
+    };
             return View(nino);
         }
 
